@@ -38,7 +38,7 @@ const largestNumber = (arr) => {
   if (arr.every((a) => a === 0)) return "0"; // every() 로 0인 경우 처리
   let sort_arr = arr.sort().reverse();
   return sort_arr.sort(
-    (a, b) => a.toString() + b.toString() - (b.toString() + a.toString())
+    (a, b) => b.toString() + a.toString() - (a.toString() + b.toString())
   ); // sort()
 }; // 모든 배열의 값이 0인 경우 처리 필요
 
@@ -82,11 +82,11 @@ const generateSubsets = (arr) => {
     // 부분 집합의 수 만큼 반복
     const subset = []; // 부분 집합 제작-> j번 반복 이후 초기화
 
-    for (let j = 0; j < total; j++) {
+    for (let j = 0; j < arr.length; j++) {
       if (i & (1 << j)) {
         // & 연산자: 두 비트 모두 1이면 1
         // 만약 i의 이진수 값의 j번째에 1이 있다면
-        subset.push(arr[i]); // 값을 저장
+        subset.push(arr[j]); // 값을 저장
       }
     }
     allset.push(subset);
